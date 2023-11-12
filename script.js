@@ -7,12 +7,15 @@ function chunkArray(array, size) {
 
 const dateTimeFormat = Intl.DateTimeFormat("fr");
 
+
 function generateUI(json){
+  /*
   const repos = json.map(j => ({
     name: j.name,
     description: j.description || "",
     updated_at: j.updated_at
   }));
+  */
 
   const chunks = chunkArray(repos, 3);
 
