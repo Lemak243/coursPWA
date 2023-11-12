@@ -7,17 +7,8 @@ function chunkArray(array, size) {
 
 const dateTimeFormat = Intl.DateTimeFormat("fr");
 
-
 function generateUI(json){
-  /*
-  const repos = json.map(j => ({
-    name: j.name,
-    description: j.description || "",
-    updated_at: j.updated_at
-  }));
-  */
-
-  const chunks = chunkArray(repos, 3);
+  const chunks = chunkArray(json, 3);
 
   let html = "";
 
@@ -69,9 +60,9 @@ function generateUI(json){
   document.querySelector(".container").innerHTML = html;
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
   fetch("https://api.github.com/users/EmmanuelDemey/repos")
-  .then(response => response.json())
-  .then(json => generateUI(json));
+	.then(response => response.json())
+    .then(json => generateUI(json));
+
 });
