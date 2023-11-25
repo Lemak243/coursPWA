@@ -72,7 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".notification").removeAttribute("hidden");
   });
 
-  fetch("https://api.github.com/users/EmmanuelDemey/repos")
-    .then((response) => response.json())
-    .then((json) => generateUI(json));
+  let fetchData;
+  if (navigator.onLine) {
+    fetchData = fetch("https://api.github.com/users/EmmanuelDemey/repos")
+      .then((response) => response.json())
+      .then((data) => localforage.setItem("data", data));
+  } else {
+    fetchData = localforage.getItem("data");
+  }
+
+  fetchData.then((json) => generateUI(json));
 });
