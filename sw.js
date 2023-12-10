@@ -3,14 +3,15 @@ importScripts(
 );
 
 const cacheName = "blog-v1";
+const { assets } = global.serviceWorkerOption;
 
 const files = [
   "/",
-  "/script.js",
+  ...assets,
   "https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js",
   "https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css",
   "https://bulma.io/images/placeholders/1280x960.png",
-  "https://bulma.io/images/placeholders/96x96.png"
+  "https://bulma.io/images/placeholders/96x96.png",
 ];
 
 self.addEventListener("install", e => {
